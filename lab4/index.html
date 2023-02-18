@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <form>
+        <input type="number" id="table-number" />
+        <button id="btn-table">Crear tabla</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Numero</th>
+            <th>Cuadrado</th>
+            <th>Cubo</th>
+          </tr>
+        </thead>
+        <tbody id="number-table"></tbody>
+      </table>
+    </div>
+
+    <div>
+      <p id="nums-disp"></p>
+      <form>
+        <button id="generate-rand">Generar números</button>
+        <input type="number" id="rand-input" />
+        <button id="check-rand">Enviar respuesta</button>
+      </form>
+      <p id="res-disp"></p>
+    </div>
+
+    <div>
+      <form>
+        <label>Escribe los numeros separados por comas</label>
+        <input type="text" id="sign-input" />
+        <button id="count-sign">Contar signos</button>
+      </form>
+      <p id="sign-disp"></p>
+    </div>
+
+    <div>
+      <form>
+        <label>Escribe el numero a voltear</label>
+        <input type="number" id="reverse-input" />
+        <button id="reverse-btn">Voltear</button>
+      </form>
+      <p id="reverse-output"></p>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
