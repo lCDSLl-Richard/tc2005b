@@ -59,13 +59,39 @@ const matrixAverages = (matrix) => {
     averages.push(row.reduce((number, sum) => number + sum) / row.length);
   });
 
-  return averages;
+  let string;
+
+  for (let i = 0; i < averages.length - 1; i++) {
+    string += averages[i] + ", ";
+  }
+
+  string += averages[-1];
+
+  document.getElementById(
+    "matrix-disp"
+  ).innerText = `The averages per row are: ${string}.`;
 };
 
 const numberReverser = (number) => {
   document.getElementById("reverse-output").innerText = Number(
     String(number).split("").reverse().join("")
   );
+};
+
+const calculatePoints = () => {
+  let px = document.getElementById("point-a").value;
+  let py = document.getElementById("point-b").value;
+  px = px.split(",");
+  py = py.split(",");
+  const pointA = new Point(px[0], px[1]);
+  const pointB = new Point(py[0], py[1]);
+
+  document.getElementById(
+    "distance-out"
+  ).innerText = `La distancia es: ${pointA.getDistance(pointB)}`;
+  document.getElementById(
+    "slope-out"
+  ).innerText = `La pendiente es: ${pointB.getSlope(pointA)}`;
 };
 
 document.getElementById("btn-table").addEventListener("click", (e) => {
@@ -91,9 +117,24 @@ document.getElementById("count-sign").addEventListener("click", (e) => {
   signCounter(numbers);
 });
 
+document.getElementById("matrix-sign").addEventListener("click", (e) => {
+  e.preventDefault();
+  let numbers = document.getElementById("matrix-input").value;
+  numbers = numbers.split(";");
+  numbers = numbers.map((number) => number.split(","));
+  numbers = numbers.forEach((number) => number.map((num) => Number(num)));
+  console.log(numbers);
+  matrixAverages(numbers);
+});
+
 document.getElementById("reverse-btn").addEventListener("click", (e) => {
   e.preventDefault();
   numberReverser(document.getElementById("reverse-input").value);
+});
+
+document.getElementById("point-distance").addEventListener("click", (e) => {
+  e.preventDefault();
+  calculatePoints();
 });
 
 function getRandomInt(min, max) {
