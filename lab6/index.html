@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <title>Password Validator</title>
+  </head>
+  <body>
+    <main class="columns content my-3">
+      <div class="column is-three-fifths is-offset-one-fifth">
+        <h1>Password validator</h1>
+        <form>
+          <input
+            class="input is-big my-3"
+            id="password"
+            type="password"
+            placeholder="Enter password"
+          />
+          <input
+            class="input is-big my-3"
+            id="password-validate"
+            type="password"
+            placeholder="Enter password again"
+          />
+        </form>
+        <p id="password-output"></p>
+
+        <script src="main.js"></script>
+      </div>
+    </main>
+  </body>
+</html>
