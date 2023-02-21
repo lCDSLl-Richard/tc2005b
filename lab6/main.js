@@ -3,54 +3,71 @@ let password = document.getElementById("password");
 let output = document.getElementById("password-output");
 
 passwordValidator.addEventListener("keyup", () => {
-  if (
-    validatePassword(password.value) &&
-    password.value === passwordValidator.value
-  ) {
+  let validation = validatePassword();
+  if (validation[0]) {
     output.innerText = "Passwords match";
     output.classList = ["notification is-success"];
   } else {
-    output.innerText = "Passwords do not match or are invalid";
+    output.innerText = validation[1];
     output.classList = ["notification is-danger"];
   }
 });
 
 password.addEventListener("keyup", () => {
-  if (
-    validatePassword(password.value) &&
-    password.value === passwordValidator.value
-  ) {
+  let validation = validatePassword();
+  if (validation[0]) {
     output.innerText = "Passwords match";
     output.classList = ["notification is-success"];
   } else {
-    output.innerText = "Passwords do not match or are invalid";
+    output.innerText = validation[1];
     output.classList = ["notification is-danger"];
   }
 });
 
-function validatePassword(password) {
+function validatePassword() {
   const reqCharacters = ["!", "#", "$", "%", "&"];
   const reqNums = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
-  let valid = false;
+  let containsSpecChar = false;
+  let containsNumber = false;
+  let isReqLength = true;
+  let match = true;
+  let errorMessage = "";
 
   for (char of reqCharacters) {
-    if (password.includes(char)) {
-      valid = true;
+    if (password.value.includes(char)) {
+      containsSpecChar = true;
       break;
     }
+  }
+
+  if (!containsSpecChar) {
+    errorMessage = "Password must contain a special character";
   }
 
   for (char of reqNums) {
-    if (password.includes(char)) {
-      valid = true;
+    if (password.value.includes(char)) {
+      containsNumber = true;
       break;
     }
   }
 
-  if (password.length < 8 || password.toLowerCase() === password) {
-    valid = false;
+  if (!containsNumber) {
+    errorMessage = "Password must contain a number";
   }
 
-  return valid;
+  if (password.value.length < 8 || password.value.toLowerCase() === password) {
+    isReqLength = false;
+    errorMessage = "Password must be at least 8 characters";
+  }
+
+  if (password.value !== passwordValidator.value) {
+    match = false;
+    errorMessage = "Passwords dont match";
+  }
+
+  return [
+    containsNumber && containsSpecChar && isReqLength && match,
+    errorMessage,
+  ];
 }
