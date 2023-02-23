@@ -44,6 +44,7 @@ function validatePassword() {
   let containsSpecChar = false;
   let containsNumber = false;
   let isReqLength = true;
+  let containsMayus = true;
   let match = true;
   let errorMessage = "";
 
@@ -69,9 +70,14 @@ function validatePassword() {
     errorMessage = "Password must contain a number";
   }
 
-  if (password.value.length < 8 || password.value.toLowerCase() === password) {
+  if (password.value.length < 8) {
     isReqLength = false;
     errorMessage = "Password must be at least 8 characters";
+  }
+
+  if (password.value.toLowerCase() === password.value) {
+    containsMayus = false;
+    errorMessage = "Password must contain a Capital Letter";
   }
 
   if (password.value !== passwordValidator.value) {
@@ -80,7 +86,7 @@ function validatePassword() {
   }
 
   return [
-    containsNumber && containsSpecChar && isReqLength && match,
+    containsNumber && containsSpecChar && isReqLength && match && containsMayus,
     errorMessage,
   ];
 }
