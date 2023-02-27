@@ -28,7 +28,7 @@ console.log(twoSum([1, 3, 4, 51, 2, 3], 3));
 stringToFile("Hello World");
 
 const server = http.createServer((request, response) => {
-  response.setHeader("Conten-Type", "html/text");
+  response.setHeader("Content-Type", "html/text");
   response.write(`<!DOCTYPE html>
   <html lang="en">
     <head>
