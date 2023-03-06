@@ -2,13 +2,11 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/lab1", (req, res) => {
-  res.render("lab1");
-});
+const labsController = require("../controllers/labs.controller");
 
-router.get("/lab4", (req, res) => {
-  res.render("lab4");
-});
+router.get("/lab1", labsController.getLab1);
+
+router.get("/lab4", labsController.getLab4);
 
 const lab6Routes = require("./lab6.routes");
 

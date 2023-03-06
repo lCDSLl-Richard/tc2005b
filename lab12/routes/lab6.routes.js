@@ -2,16 +2,12 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.render("lab6");
-});
+const lab6Controller = require("../controllers/lab6.controller");
 
-router.get("/questions", (req, res) => {
-  res.render("questions");
-});
+router.get("/", lab6Controller.getDefault);
 
-router.get("/shop", (req, res) => {
-  res.render("shop");
-});
+router.get("/questions", lab6Controller.getQuestions);
+
+router.get("/shop", lab6Controller.getShop);
 
 module.exports = router;

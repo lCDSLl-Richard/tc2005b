@@ -12,16 +12,11 @@ app.use(express.static(path.join(__dirname, "static")));
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-app.get("/", (req, res) => {
-  res.redirect("home");
-});
+const serverController = require("./controllers/server.controller");
 
-app.get("/home", (req, res) => {
-  res.render("home", {
-    name: "Richard",
-    fruits: ["Manzana", "Mango", "Fresa", "Melon", "Sandia"],
-  });
-});
+app.get("/", serverController.getDefault);
+
+app.get("/home", serverController.getHome);
 
 const messageRoutes = require("./routes/message.routes");
 app.use("/message", messageRoutes);

@@ -2,9 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 
-router.use("/send", (req, res) => {
-  const data = req.body;
-  res.render("message", { message: data });
-});
+const messageController = require("../controllers/message.controller");
+
+router.use("/send", messageController.useMessage);
 
 module.exports = router;
