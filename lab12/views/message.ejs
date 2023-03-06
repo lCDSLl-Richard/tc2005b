@@ -4,6 +4,13 @@
   <body>
     <%- include('includes/navbar.ejs') %>
 
+    <div class="tabs">
+      <ul>
+        <li class="is-active"><a>Send</a></li>
+        <li><a>List</a></li>
+      </ul>
+    </div>
+
     <main class="section">
       <form action="/message/send" method="POST">
         <div class="field">
@@ -23,16 +30,5 @@
         </div>
       </form>
     </main>
-    <section class="section">
-      <% if(message.name) {%>
-      <article class="notification">
-        <div class="content">
-          <p>Message by: <%= message.name %></p>
-          <p>From: <%= message.mail %></p>
-          <p><%= message.message %></p>
-        </div>
-      </article>
-      <% } %>
-    </section>
   </body>
 </html>
