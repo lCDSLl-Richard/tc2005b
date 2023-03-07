@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('includes/head.ejs', {title: 'Message'}) %>
+  <body>
+    <%- include('includes/navbar.ejs') %>
+
+    <div class="tabs">
+      <ul>
+        <li class=""><a href="/message/send">Send</a></li>
+        <li class="is-active"><a>List</a></li>
+      </ul>
+    </div>
+
+    <section class="section">
+      <% messages.forEach((message) => { %>
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="https://bulma.io/images/placeholders/128x128.png" />
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong><%= message.author %></strong>
+              <small><%= message.mail %></small>
+              <br />
+              <%= message.content %>
+            </p>
+          </div>
+        </div>
+      </article>
+      <% }) %>
+    </section>
+
+    <main class="section"></main>
+  </body>
+</html>

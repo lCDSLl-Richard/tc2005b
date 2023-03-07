@@ -7,7 +7,7 @@
     <div class="tabs">
       <ul>
         <li class="is-active"><a>Send</a></li>
-        <li><a>List</a></li>
+        <li><a href="/message/see">List</a></li>
       </ul>
     </div>
 
@@ -15,7 +15,7 @@
       <form action="/message/send" method="POST">
         <div class="field">
           <label for="" class="label">Enter your name</label>
-          <input type="text" name="name" id="" class="input" />
+          <input type="text" name="author" id="" class="input" />
         </div>
         <div class="field">
           <label for="" class="label">Enter your mail</label>
@@ -23,7 +23,7 @@
         </div>
         <div class="field">
           <label for="" class="label">Enter your message</label>
-          <textarea name="message" id="" class="input"></textarea>
+          <textarea name="content" id="" class="input"></textarea>
         </div>
         <div class="control">
           <button class="button is-info">Sumbit</button>
