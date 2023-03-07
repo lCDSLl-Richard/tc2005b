@@ -4,7 +4,7 @@ exports.getDefault = (req, res) => {
 
 exports.getHome = (req, res) => {
   res.render("home", {
-    name: "Richard",
+    name: req.session.last_author || "World",
     fruits: ["Manzana", "Mango", "Fresa", "Melon", "Sandia"],
   });
 };

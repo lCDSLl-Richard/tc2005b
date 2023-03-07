@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const session = require("express-session");
 
 const app = express();
 
@@ -11,6 +12,15 @@ app.use(express.static(path.join(__dirname, "static")));
 
 app.set("view engine", "ejs");
 app.set("views", "views");
+
+app.use(
+  session({
+    secret:
+      "mi string secreto que debe ser un string aleatorio muy largo, no como éste",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 const serverController = require("./controllers/server.controller");
 
