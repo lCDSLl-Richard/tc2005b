@@ -1,3 +1,5 @@
+const db = require("../util/db");
+
 const messages = [
   {
     author: "Richard",
@@ -19,10 +21,20 @@ module.exports = class Message {
   }
 
   save() {
-    messages.push(this);
+    return db.execute(
+      `
+      INSERT INTO Message(author, mail, content) 
+      VALUES (?, ?, ?)
+      `,
+      [this.author, this.mail, this.content]
+    );
   }
 
   static getAll() {
-    return messages;
+    return db.execute("SELECT * FROM Message");
+  }
+
+  static deleteById(id) {
+    return db.execute("DELETE FROM Message WHERE id = ?", [id]);
   }
 };

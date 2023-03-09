@@ -10,4 +10,6 @@ router.get("/see", messageController.getMessage);
 
 router.post("/send", messageController.postMessage);
 
+router.get("/delete/:id", messageController.getDelete);
+
 module.exports = router;
