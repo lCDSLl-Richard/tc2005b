@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('includes/head.ejs', {title: 'Sign In'}) %>
+  <body>
+    <%- include('includes/navbar.ejs') %>
+
+    <main class="section">
+      <form action="/user/signin" method="POST">
+        <h1 class="title">Log In</h1>
+        <div class="field">
+          <label for="" class="label">Enter your mail</label>
+          <input type="mail" name="username" id="" class="input" />
+        </div>
+        <div class="field">
+          <label for="" class="label">Enter your password</label>
+          <input type="password" name="password" id="" class="input" />
+        </div>
+        <div class="control">
+          <button class="button is-info">Sumbit</button>
+        </div>
+      </form>
+      <% if (message) { %>
+      <section class="section">
+        <div class="notification is-danger"><%= message %></div>
+      </section>
+      <% } %>
+    </main>
+  </body>
+</html>

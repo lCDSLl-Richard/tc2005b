@@ -5,12 +5,11 @@ exports.sendMessage = (req, res) => {
 };
 
 exports.getMessage = (req, res) => {
-  let cookies = req.get("Cookie");
   Message.getAll()
     .then(([rows, data]) => {
       res.render("message_list", {
         messages: rows,
-        last_author: cookies.split("=")[1].split(";")[0],
+        last_author: req.cookies.last_author,
       });
     })
     .catch((err) => {
